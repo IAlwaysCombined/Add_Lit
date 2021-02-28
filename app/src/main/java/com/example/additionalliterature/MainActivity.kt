@@ -1,26 +1,26 @@
 package com.example.additionalliterature
 
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.additionalliterature.activities.AuthorizationRegistrationActivity
 import com.example.additionalliterature.databinding.ActivityMainBinding
 import com.example.additionalliterature.ui.*
 import com.example.additionalliterature.utilits.replaceActivity
 import com.example.additionalliterature.utilits.replaceFragment
-import com.mikepenz.materialdrawer.AccountHeader
+import com.google.firebase.auth.FirebaseAuth
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
+
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mBinding: ActivityMainBinding
     private lateinit var mDrawer: Drawer
     private lateinit var mToolbar: androidx.appcompat.widget.Toolbar
+    private lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         mBinding = ActivityMainBinding.inflate(layoutInflater)
@@ -35,11 +35,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFunc() {
-        //setSupportActionBar(mToolbar)
-        val sharedPref = this.getSharedPreferences(
-            getString(R.string.login_edt_text), Context.MODE_PRIVATE
-        )
-        if (sharedPref != null) {
+        mAuth = FirebaseAuth.getInstance()
+        val currentUser = mAuth.currentUser
+        if (currentUser != null) {
             replaceFragment(ScrollNewsFragment())
         } else {
             replaceActivity(AuthorizationRegistrationActivity())

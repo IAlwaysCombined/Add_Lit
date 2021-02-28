@@ -1,22 +1,26 @@
 package com.example.additionalliterature.ui
 
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import com.example.additionalliterature.MainActivity
 import com.example.additionalliterature.R
 import com.example.additionalliterature.utilits.replaceActivity
 import com.example.additionalliterature.utilits.replaceFragment
 import com.example.additionalliterature.utilits.showToast
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_avtorization.*
 
 
 class AuthorizationFragment : Fragment(R.layout.fragment_avtorization) {
 
+    private lateinit var mAuth: FirebaseAuth
+
     override fun onStart() {
         super.onStart()
-        login_btn.setOnClickListener { signInUser() }
-        login_registration.setOnClickListener { openRegistrationFragment() }
-        login_restore_password.setOnClickListener { openRestorePassFragment() }
+        auth_btn.setOnClickListener { signInUser() }
+        auth_registration.setOnClickListener { openRegistrationFragment() }
+        auth_restore_password.setOnClickListener { openRestorePassFragment() }
+        mAuth = FirebaseAuth.getInstance()
     }
 
     private fun openRestorePassFragment() {
@@ -28,27 +32,20 @@ class AuthorizationFragment : Fragment(R.layout.fragment_avtorization) {
     }
 
     private fun signInUser() {
-        val db = FirebaseFirestore.getInstance()
-        db.collection("users").document("user")
-            .collection("user_id")
-            .get()
-            .addOnCompleteListener {
-                val result: StringBuffer = StringBuffer()
-                if (it.isSuccessful) {
-                    for (document in it.result!!) {
-                        result.append(document.data.getValue("Email")).append(" ")
-                            .append(document.data.getValue("Password")).append("\n\n")
-                        val loginAuthorization = document["Email"] as String?
-                        val passAuthorization = document["Password"] as String?
-                        if (loginAuthorization == login_edt_text.text.toString() && passAuthorization == login_password_edt_text.text.toString()) {
-                            //Производить старт Activity
-                            replaceActivity(MainActivity())
-                            break
-                        } else {
-                            showToast("Пользователь не авторизован!")
-                            break
-                        }
-                    }
+        if (TextUtils.isEmpty(auth_email_edt_text.text.toString())){
+            showToast("Заполните Email")
+            return
+        }else if(TextUtils.isEmpty(auth_password_edt_text.text.toString())){
+            showToast("Заполните пароль")
+            return
+        }
+        mAuth.signInWithEmailAndPassword(auth_email_edt_text.text.toString(), auth_password_edt_text.text.toString())
+            .addOnCompleteListener { task ->
+                if(task.isSuccessful){
+                    replaceActivity(MainActivity())
+                }
+                else{
+                    showToast("Что- то пошло не так")
                 }
             }
     }

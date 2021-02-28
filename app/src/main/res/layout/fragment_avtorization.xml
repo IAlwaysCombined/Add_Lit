@@ -23,9 +23,9 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/login_edt_text"
-            android:background="@drawable/styles_edt_text"
+            android:id="@+id/auth_email_edt_text"
             style="@style/EdtText"
+            android:background="@drawable/styles_edt_text"
             android:hint="@string/login_edt_text"
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
@@ -33,41 +33,41 @@
             app:layout_constraintTop_toBottomOf="@id/login_start_view" />
 
         <EditText
-            android:background="@drawable/styles_edt_text"
-            android:id="@+id/login_password_edt_text"
+            android:id="@+id/auth_password_edt_text"
             style="@style/EdtText"
-            android:inputType="textPassword"
+            android:background="@drawable/styles_edt_text"
             android:hint="@string/password_edt_text"
+            android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/login_edt_text" />
+            app:layout_constraintTop_toBottomOf="@id/auth_email_edt_text" />
 
         <Button
+            android:id="@+id/auth_btn"
+            style="@style/btn"
             android:layout_marginVertical="10dp"
             android:background="@color/colorPrimary"
-            android:textColor="@color/color_white"
-            android:id="@+id/login_btn"
-            style="@style/btn"
             android:text="@string/login_btn_text"
+            android:textColor="@color/color_white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/login_password_edt_text" />
+            app:layout_constraintTop_toBottomOf="@id/auth_password_edt_text" />
 
         <TextView
-            android:textColor="@color/colorPrimaryDark"
-            android:id="@+id/login_restore_password"
+            android:id="@+id/auth_restore_password"
             style="@style/smallText"
             android:text="@string/login_restore_password"
+            android:textColor="@color/colorPrimaryDark"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/login_btn" />
+            app:layout_constraintTop_toBottomOf="@id/auth_btn" />
 
         <TextView
-            android:textColor="@color/colorPrimaryDark"
-            android:id="@+id/login_registration"
+            android:id="@+id/auth_registration"
             style="@style/smallText"
             android:text="@string/login_registration"
+            android:textColor="@color/colorPrimaryDark"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/login_btn" />
+            app:layout_constraintTop_toBottomOf="@id/auth_btn" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
