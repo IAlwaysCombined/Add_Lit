@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.RegistrationFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/registration_main_constrain_layout"
+        style="@style/mainConstraintLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/registration_start_view"
+            style="@style/largeText"
+            android:text="@string/registration_start_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/registration_edt_text"
+            style="@style/EdtText"
+            android:hint="@string/login_edt_text"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/registration_start_view"
+            android:minLines="9"/>
+
+        <EditText
+            android:id="@+id/registration_password_edt_text"
+            style="@style/EdtText"
+            android:hint="@string/password_edt_text"
+            android:inputType="textPassword"
+            android:minLines="6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/registration_edt_text" />
+
+        <EditText
+            android:id="@+id/registration_name_edt_text"
+            style="@style/EdtText"
+            android:hint="@string/name_edt_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/registration_password_edt_text" />
+
+        <EditText
+            android:id="@+id/registration_last_name_edt_text"
+            style="@style/EdtText"
+            android:hint="@string/last_name_edt_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/registration_name_edt_text" />
+
+
+        <EditText
+            android:id="@+id/registration_course_edt_text"
+            style="@style/EdtText"
+            android:digits="1234"
+            android:hint="@string/course_edit_text"
+            android:maxLength="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/registration_last_name_edt_text" />
+
+        <Button
+            android:id="@+id/registration_btn"
+            style="@style/btn"
+            android:text="@string/btn_registration"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/registration_course_edt_text" />
+
+        <TextView
+            android:id="@+id/registration_authorization"
+            style="@style/smallText"
+            android:text="@string/authorization_registration"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/registration_btn" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
