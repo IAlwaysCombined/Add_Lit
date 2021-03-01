@@ -1,19 +1,20 @@
 <resources>
     <string name="app_name">Дополнительная литература</string>
-    <string name="login_start_view">Авторизация</string>
-    <string name="login_edt_text">E-mail</string>
-    <string name="password_edt_text">Пароль</string>
-    <string name="login_btn_text">Войти</string>
+    <string name="auth_start_view_text">Авторизация</string>
+    <string name="email_edt_text_hint">E-mail</string>
+    <string name="password_edt_text_hint">Пароль</string>
+    <string name="btn_authorization_text">Войти</string>
     <string name="login_restore_password">Восстановить пароль</string>
     <string name="login_registration">Зарегистрироваться</string>
-    <string name="registration_start_view">Регистрация</string>
-    <string name="btn_registration">Зарегистрироваться</string>
+    <string name="registration_start_view_text">Регистрация</string>
+    <string name="btn_registration_text">Зарегистрироваться</string>
     <string name="course_edit_text">Курс обучения</string>
     <string name="authorization_registration">Авторизация</string>
     <string name="authorization_toast_edt_login_or_password">Введите логин и/или пароль!</string>
-    <string name="name_edt_text">Имя</string>
-    <string name="last_name_edt_text">Фамилия</string>
+    <string name="name_edt_text_hint">Имя</string>
     <string name="about_us_text_view">О нас</string>
     <string name="addLit_text_view">Приложение AddLit создано для студентов Московского приборостороительного техникума им. Плеханова. Приложение обеспечиват студентов необходимой необязательной литературой по профильным предметам.</string>
     <string name="addLit_protection_text_view">AddLit все права защищены.</string>
+    <string name="registration_name_edt_text_hint">Имя</string>
+    <string name="registration_course_edt_text_hint">Курс</string>
 </resources>

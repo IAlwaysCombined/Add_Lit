@@ -92,7 +92,10 @@ class MainActivity : AppCompatActivity() {
                         1 -> replaceFragment(SendNewsFragment())
                         2 -> replaceFragment(SendErrorFragment())
                         3 -> replaceFragment(AboutUsFragment())
-                        4 -> replaceActivity(AuthorizationRegistrationActivity())
+                        4 -> {
+                            mAuth.signOut()
+                            replaceActivity(AuthorizationRegistrationActivity())
+                        }
                     }
                     return false
                 }
