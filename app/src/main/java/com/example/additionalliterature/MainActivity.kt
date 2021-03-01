@@ -9,10 +9,14 @@ import com.example.additionalliterature.ui.*
 import com.example.additionalliterature.utilits.replaceActivity
 import com.example.additionalliterature.utilits.replaceFragment
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
+import kotlinx.android.synthetic.main.fragment_account_information.*
+import kotlinx.android.synthetic.main.fragment_registration.*
+import kotlinx.android.synthetic.main.fragment_scroll_news.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -45,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFields() {
-        mToolbar = mBinding.mainToolbar
+        mToolbar = mBinding.mainToolbarUsers
         createDrawer()
     }
 

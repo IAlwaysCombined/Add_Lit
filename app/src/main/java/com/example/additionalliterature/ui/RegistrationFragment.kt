@@ -59,6 +59,8 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
                         ?.setValue(registration_name_edt_text.text.toString())
                     currentUSerDb?.child("course")
                         ?.setValue(registration_course_edt_text.text.toString())
+                    currentUSerDb?.child("role")
+                        ?.setValue("user")
                     replaceActivity(MainActivity())
                     showToast("Регистрация прошла успешно!")
 

@@ -1,19 +1,20 @@
 package com.example.additionalliterature.ui
 
-import android.app.Activity
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import com.example.additionalliterature.MainActivity
 import com.example.additionalliterature.R
-import com.example.additionalliterature.activities.AuthorizationRegistrationActivity
 import com.example.additionalliterature.utilits.replaceActivity
 import com.example.additionalliterature.utilits.replaceFragment
 import com.example.additionalliterature.utilits.showToast
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.fragment_avtorization.*
+import com.google.firebase.ktx.Firebase
+
+import kotlinx.android.synthetic.main.fragment_authorization.*
 
 
-class AuthorizationFragment : Fragment(R.layout.fragment_avtorization) {
+
+class AuthorizationFragment : Fragment(R.layout.fragment_authorization) {
 
     private lateinit var mAuth: FirebaseAuth
 
@@ -21,12 +22,25 @@ class AuthorizationFragment : Fragment(R.layout.fragment_avtorization) {
         super.onStart()
         auth_btn.setOnClickListener { signInUser() }
         auth_registration.setOnClickListener { openRegistrationFragment() }
-        auth_restore_password.setOnClickListener { openRestorePassFragment() }
+        auth_restore_password.setOnClickListener { restorePass() }
         mAuth = FirebaseAuth.getInstance()
     }
 
-    private fun openRestorePassFragment() {
-        replaceFragment(RestorePassFragment())
+    private fun restorePass() {
+        if (TextUtils.isEmpty(auth_email_edt_text.text)){
+            showToast("Поле Email не заполнено!")
+            return
+        }
+        val emailAddress = auth_email_edt_text.text.toString()
+        mAuth.sendPasswordResetEmail(emailAddress)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    showToast("Сообщение для сброса пароля отправленно")
+                }
+                else{
+                    showToast("Пользователя с таким E-mail не существует")
+                }
+            }
     }
 
     private fun openRegistrationFragment() {
@@ -47,7 +61,7 @@ class AuthorizationFragment : Fragment(R.layout.fragment_avtorization) {
                     replaceActivity(MainActivity())
                 }
                 else{
-                    showToast("Что- то пошло не так")
+                    showToast("Не верно введен Email")
                 }
             }
     }
