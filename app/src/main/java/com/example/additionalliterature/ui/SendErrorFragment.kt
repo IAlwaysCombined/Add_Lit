@@ -8,5 +8,8 @@ import android.view.ViewGroup
 import com.example.additionalliterature.R
 
 class SendErrorFragment : Fragment(R.layout.fragment_send_error) {
-    
+
+    override fun onStart() {
+        super.onStart()
+    }
 }

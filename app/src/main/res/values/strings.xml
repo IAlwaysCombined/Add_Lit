@@ -1,20 +1,34 @@
 <resources>
-    <string name="app_name">Дополнительная литература</string>
-    <string name="auth_start_view_text">Авторизация</string>
-    <string name="email_edt_text_hint">E-mail</string>
-    <string name="password_edt_text_hint">Пароль</string>
-    <string name="btn_authorization_text">Войти</string>
-    <string name="login_restore_password">Восстановить пароль</string>
-    <string name="login_registration">Зарегистрироваться</string>
-    <string name="registration_start_view_text">Регистрация</string>
+    <!-- appName. -->
+    <string name="app_name">AddLit</string>
+
+    <!-- btnText. -->
+    <string name="btn_auth_text">Войти</string>
     <string name="btn_registration_text">Зарегистрироваться</string>
-    <string name="course_edit_text">Курс обучения</string>
-    <string name="authorization_registration">Авторизация</string>
-    <string name="authorization_toast_edt_login_or_password">Введите логин и/или пароль!</string>
-    <string name="name_edt_text_hint">Имя</string>
+
+
+    <!-- textView. -->
     <string name="about_us_text_view">О нас</string>
     <string name="addLit_text_view">Приложение AddLit создано для студентов Московского приборостороительного техникума им. Плеханова. Приложение обеспечиват студентов необходимой необязательной литературой по профильным предметам.</string>
     <string name="addLit_protection_text_view">AddLit все права защищены.</string>
-    <string name="registration_name_edt_text_hint">Имя</string>
-    <string name="registration_course_edt_text_hint">Курс</string>
+    <string name="auth_text_view">Авторизация</string>
+    <string name="registration_now_text_view">Зарегистрируйтесь сейчас!</string>
+    <string name="registration_text_view">Регистрация</string>
+    <string name="auth_restore_password_text_view">Восстановить пароль</string>
+
+
+    <!-- hint. -->
+    <string name="email_text">E-mail</string>
+    <string name="password_text">Пароль</string>
+    <string name="name_text">Имя</string>
+    <string name="course_text">Курс</string>
+
+    <!-- toast. -->
+    <string name="email_edt_text_not_filled">Поле Email не заполнено</string>
+    <string name="password_edt_text_not_filled">Поле Пароль не заполнено</string>
+    <string name="name_edt_text_not_filled">Поле Имя не заполнено</string>
+    <string name="course_edt_text_not_filled">Поле Курс не заполнено</string>
+    <string name="password_reset_message_sent">Сообщение для сброса пароля отправлено</string>
+    <string name="something_went_wrong">Что-то пошло не так</string>
+
 </resources>

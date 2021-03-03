@@ -7,6 +7,7 @@
     tools:context=".ui.SendNewsFragment">
 
     <EditText
+        android:background="@drawable/styles_edt_text"
         android:layout_marginTop="20dp"
         android:id="@+id/send_news_edt_text"
         style="@style/EdtText"

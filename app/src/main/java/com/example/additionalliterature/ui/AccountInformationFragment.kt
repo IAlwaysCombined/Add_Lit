@@ -29,13 +29,13 @@ class AccountInformationFragment : Fragment(R.layout.fragment_account_informatio
         val user = auth.currentUser
         val unreferenced = databaseReference?.child(user?.uid!!)
 
-        text_view_email.text = user?.email
+        bio_email_text_view.text = getString(R.string.email_text) + ": " + user?.email
 
         unreferenced?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
-                text_view_FIO.text = snapshot.child("name").value.toString()
-                text_view_course.text = snapshot.child("course").value.toString()
+                bio_name_text_view.text = getString(R.string.name_text) + ": " + snapshot.child("name").value.toString()
+                bio_course_text_view.text = getString(R.string.course_text) + ": " + snapshot.child("course").value.toString()
             }
 
             override fun onCancelled(error: DatabaseError) {

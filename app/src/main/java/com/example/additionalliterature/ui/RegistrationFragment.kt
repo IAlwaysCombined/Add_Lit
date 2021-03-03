@@ -33,41 +33,44 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
     }
 
     private fun signUpUser() {
-        if (TextUtils.isEmpty(registration_email_edt_text.text.toString())) {
-            showToast("Заполните Email")
-            return
-        } else if (TextUtils.isEmpty(registration_password_edt_text.text.toString())) {
-            showToast("Заполните пароль")
-            return
-        } else if (TextUtils.isEmpty(registration_name_edt_text.text.toString())) {
-            showToast("Заполните имя пользователя")
-            return
-        } else if (TextUtils.isEmpty(registration_course_edt_text.text.toString())) {
-            showToast("Заполните курс обучения")
-            return
+        when {
+            TextUtils.isEmpty(bio_email_text_view.text.toString()) -> {
+                showToast(getString(R.string.email_edt_text_not_filled))
+                return
+            }
+            TextUtils.isEmpty(registration_password_edt_text.text.toString()) -> {
+                showToast(getString(R.string.password_edt_text_not_filled))
+                return
+            }
+            TextUtils.isEmpty(registration_name_edt_text.text.toString()) -> {
+                showToast(getString(R.string.name_edt_text_not_filled))
+                return
+            }
+            TextUtils.isEmpty(registration_course_edt_text.text.toString()) -> {
+                showToast(getString(R.string.course_edt_text_not_filled))
+                return
+            }
+            else -> mAuth.createUserWithEmailAndPassword(
+                bio_email_text_view.text.toString(),
+                registration_password_edt_text.text.toString()
+            )
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        val currentUser = mAuth.currentUser
+                        val currentUSerDb = databaseReference?.child((currentUser?.uid!!))
+                        currentUSerDb?.child("name")
+                            ?.setValue(registration_name_edt_text.text.toString())
+                        currentUSerDb?.child("course")
+                            ?.setValue(registration_course_edt_text.text.toString())
+                        currentUSerDb?.child("role")
+                            ?.setValue("user")
+                        replaceActivity(MainActivity())
+                    } else {
+                        showToast(getString(R.string.something_went_wrong))
+                    }
+                }
         }
 
-        mAuth.createUserWithEmailAndPassword(
-            registration_email_edt_text.text.toString(),
-            registration_password_edt_text.text.toString()
-        )
-            .addOnCompleteListener {
-                if (it.isSuccessful) {
-                    val currentUser = mAuth.currentUser
-                    val currentUSerDb = databaseReference?.child((currentUser?.uid!!))
-                    currentUSerDb?.child("name")
-                        ?.setValue(registration_name_edt_text.text.toString())
-                    currentUSerDb?.child("course")
-                        ?.setValue(registration_course_edt_text.text.toString())
-                    currentUSerDb?.child("role")
-                        ?.setValue("user")
-                    replaceActivity(MainActivity())
-                    showToast("Регистрация прошла успешно!")
-
-                } else {
-                    showToast("Что-то пошло не так!")
-                }
-            }
     }
 }
 

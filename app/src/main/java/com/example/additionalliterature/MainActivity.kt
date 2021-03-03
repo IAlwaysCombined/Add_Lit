@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
             .addDrawerItems(
                 PrimaryDrawerItem().withIdentifier(100)
                     .withIconTintingEnabled(true)
-                    .withName("Информация об аккаунте!")
+                    .withName("Информация об аккаунте")
                     .withSelectable(false)
                     .withIcon(R.drawable.account_info_toolbar),
                 PrimaryDrawerItem().withIdentifier(101)

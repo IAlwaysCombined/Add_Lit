@@ -2,74 +2,69 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_main_constrain_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context=".ui.AuthorizationFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/login_main_constrain_layout"
-        style="@style/mainConstraintLayout"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <TextView
+        android:id="@+id/auth_start_view"
+        style="@style/largeText"
+        android:text="@string/auth_text_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:textColor="@color/colorPrimaryDark"
-            android:id="@+id/login_start_view"
-            style="@style/largeText"
-            android:text="@string/auth_start_view_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/auth_email_edt_text"
-            style="@style/EdtText"
-            android:background="@drawable/styles_edt_text"
-            android:hint="@string/email_edt_text_hint"
-            android:inputType="textEmailAddress"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/login_start_view" />
+    <EditText
+        android:id="@+id/auth_email_edt_text"
+        style="@style/EdtText"
+        android:background="@drawable/styles_edt_text"
+        android:drawableEnd="@drawable/email"
+        android:hint="@string/email_text"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/auth_start_view" />
 
-        <EditText
-            android:id="@+id/auth_password_edt_text"
-            style="@style/EdtText"
-            android:background="@drawable/styles_edt_text"
-            android:hint="@string/password_edt_text_hint"
-            android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/auth_email_edt_text" />
+    <EditText
+        android:id="@+id/auth_password_edt_text"
+        style="@style/EdtText"
+        android:background="@drawable/styles_edt_text"
+        android:drawableEnd="@drawable/password"
+        android:hint="@string/password_text"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/auth_email_edt_text" />
 
-        <Button
-            android:id="@+id/auth_btn"
-            style="@style/btn"
-            android:layout_marginVertical="10dp"
-            android:background="@color/colorPrimary"
-            android:text="@string/btn_authorization_text"
-            android:textColor="@color/color_white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/auth_password_edt_text" />
+    <Button
+        android:id="@+id/auth_btn"
+        style="@style/btn"
+        android:background="@drawable/button_background"
+        android:text="@string/btn_auth_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/auth_password_edt_text" />
 
-        <TextView
-            android:id="@+id/auth_restore_password"
-            style="@style/smallText"
-            android:text="@string/login_restore_password"
-            android:textColor="@color/colorPrimaryDark"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/auth_btn" />
+    <TextView
+        android:id="@+id/auth_restore_password"
+        style="@style/smallText"
+        android:text="@string/auth_restore_password_text_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/auth_btn" />
 
-        <TextView
-            android:id="@+id/auth_registration"
-            style="@style/smallText"
-            android:text="@string/login_registration"
-            android:textColor="@color/colorPrimaryDark"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/auth_btn" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/auth_registration"
+        style="@style/smallText"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/registration_now_text_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
