@@ -1,28 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.SendNewsFragment">
 
     <EditText
-        android:background="@drawable/styles_edt_text"
-        android:layout_marginTop="20dp"
-        android:id="@+id/send_news_edt_text"
+        android:id="@+id/send_url_news_edt_text"
         style="@style/EdtText"
-        android:hint="Введите ссылку на новость:"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/styles_edt_text"
+        android:hint="Ссылка на новость"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextFields" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        style="@style/EdtText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/styles_edt_text"
+        android:hint="Чем новость интирестна?"
+        app:layout_constraintBottom_toTopOf="@+id/send_news_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/send_url_news_edt_text" />
 
     <Button
         android:id="@+id/send_news_btn"
         style="@style/btn"
+        android:background="@drawable/button_background"
         android:text="Предложить новость"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/send_news_edt_text" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

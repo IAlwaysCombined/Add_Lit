@@ -12,7 +12,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginVertical="20dp"
-        android:src="@drawable/password"
+        android:src="@drawable/name"
         app:civ_border="true"
         app:civ_border_color="@color/colorGray"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,6 +25,7 @@
         style="@style/informationAccountEdtText"
         android:layout_marginVertical="20dp"
         android:background="@drawable/style_text_view_bio"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/circle_view_image_profile" />
@@ -44,6 +45,46 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bio_name_text_view" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bio_course_text_view"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="10dp">
+
+        <View
+            android:id="@+id/view"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:background="@drawable/style_view"/>
+
+        <TextView
+            android:id="@+id/course_subjects"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/course_subject_text_view"
+            style="@style/smallText"
+            android:textAlignment="center"
+            android:textColor="@color/colorGray"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_subjects"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/course_subjects" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
