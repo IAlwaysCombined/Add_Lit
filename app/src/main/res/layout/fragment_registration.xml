@@ -5,7 +5,7 @@
     android:id="@+id/registration_main_constrain_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.RegistrationFragment">
+    tools:context=".ui.fragments.RegistrationFragment">
 
     <TextView
         android:id="@+id/registration_start_view"

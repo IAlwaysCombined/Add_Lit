@@ -3,13 +3,13 @@ package com.example.additionalliterature.ui.objects
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.example.additionalliterature.MainActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import com.example.additionalliterature.R
 import com.example.additionalliterature.activities.AuthorizationRegistrationActivity
-import com.example.additionalliterature.ui.AboutUsFragment
-import com.example.additionalliterature.ui.AccountInformationFragment
-import com.example.additionalliterature.ui.SendErrorFragment
-import com.example.additionalliterature.ui.SendNewsFragment
+import com.example.additionalliterature.ui.fragments.AboutUsFragment
+import com.example.additionalliterature.ui.fragments.AccountInformationFragment
+import com.example.additionalliterature.ui.fragments.SendErrorFragment
+import com.example.additionalliterature.ui.fragments.SendNewsFragment
 import com.example.additionalliterature.utilits.replaceActivity
 import com.example.additionalliterature.utilits.replaceFragment
 import com.google.firebase.auth.FirebaseAuth
@@ -70,7 +70,7 @@ class AppDrawerUser(var mainActivity: AppCompatActivity, var toolBar: Toolbar, v
                         0 -> mainActivity.replaceFragment(AccountInformationFragment())
                         1 -> mainActivity.replaceFragment(SendNewsFragment())
                         2 -> mainActivity.replaceFragment(SendErrorFragment())
-                        3 -> mainActivity.replaceFragment(AboutUsFragment())
+                        4 -> mainActivity.replaceFragment(AboutUsFragment())
                         5 -> {
                             auth.signOut()
                             mainActivity.replaceActivity(AuthorizationRegistrationActivity())
@@ -80,5 +80,6 @@ class AppDrawerUser(var mainActivity: AppCompatActivity, var toolBar: Toolbar, v
                 }
             }).build()
     }
+
 
 }

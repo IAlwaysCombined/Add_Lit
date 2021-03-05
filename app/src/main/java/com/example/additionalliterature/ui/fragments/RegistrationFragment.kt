@@ -1,4 +1,4 @@
-package com.example.additionalliterature.ui
+package com.example.additionalliterature.ui.fragments
 
 import android.text.TextUtils
 import androidx.fragment.app.Fragment

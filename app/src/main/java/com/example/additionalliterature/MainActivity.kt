@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.additionalliterature.activities.AuthorizationRegistrationActivity
 import com.example.additionalliterature.databinding.ActivityMainBinding
-import com.example.additionalliterature.ui.*
+import com.example.additionalliterature.ui.fragments.ScrollNewsFragment
 import com.example.additionalliterature.ui.objects.AppDrawerAdmin
 import com.example.additionalliterature.ui.objects.AppDrawerUser
 import com.example.additionalliterature.utilits.replaceActivity
@@ -17,8 +17,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mBinding: ActivityMainBinding
     private lateinit var mToolbar: androidx.appcompat.widget.Toolbar
     private lateinit var mAuth: FirebaseAuth
-    private lateinit var mAddDrawerUser: AppDrawerUser
-    private lateinit var mAddDrawerAdmin: AppDrawerAdmin
+    lateinit var mAppDrawerUser: AppDrawerUser
+    lateinit var mAppDrawerAdmin: AppDrawerAdmin
     private lateinit var databaseReference: DatabaseReference
     private lateinit var database: FirebaseDatabase
 
@@ -38,8 +38,8 @@ class MainActivity : AppCompatActivity() {
     private fun initFields() {
         mAuth = FirebaseAuth.getInstance()
         mToolbar = mBinding.mainToolbarUsers
-        mAddDrawerUser = AppDrawerUser(this, mToolbar, mAuth)
-        mAddDrawerAdmin = AppDrawerAdmin(this, mToolbar, mAuth)
+        mAppDrawerUser = AppDrawerUser(this, mToolbar, mAuth)
+        mAppDrawerAdmin = AppDrawerAdmin(this, mToolbar, mAuth)
         database = FirebaseDatabase.getInstance()
         databaseReference = database.reference.child("Users")
     }
@@ -54,10 +54,10 @@ class MainActivity : AppCompatActivity() {
                     val roleUser = snapshot.child("role").value.toString()
                     if (roleUser == "admin") {
                         replaceFragment(ScrollNewsFragment())
-                        mAddDrawerAdmin.create()
+                        mAppDrawerAdmin.create()
                     } else {
                         replaceFragment(ScrollNewsFragment())
-                        mAddDrawerUser.create()
+                        mAppDrawerUser.create()
                     }
                 }
                 override fun onCancelled(error: DatabaseError) {
@@ -67,6 +67,4 @@ class MainActivity : AppCompatActivity() {
             replaceActivity(AuthorizationRegistrationActivity())
         }
     }
-
-
 }

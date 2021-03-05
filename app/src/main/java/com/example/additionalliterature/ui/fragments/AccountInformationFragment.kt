@@ -1,25 +1,23 @@
-package com.example.additionalliterature.ui
+package com.example.additionalliterature.ui.fragments
 
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import androidx.fragment.app.Fragment
 import com.example.additionalliterature.R
-import com.example.additionalliterature.utilits.showToast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.fragment_account_information.*
 
 @Suppress("DEPRECATION")
-class AccountInformationFragment : Fragment(R.layout.fragment_account_information) {
+class AccountInformationFragment : BaseFragment(R.layout.fragment_account_information) {
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var databaseReference: DatabaseReference
     private lateinit var database: FirebaseDatabase
 
-    override fun onStart() {
-        super.onStart()
+    override fun onResume() {
+        super.onResume()
         mAuth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
         databaseReference = database.reference.child("Users")

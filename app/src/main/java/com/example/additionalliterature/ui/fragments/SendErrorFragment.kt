@@ -1,4 +1,4 @@
-package com.example.additionalliterature.ui
+package com.example.additionalliterature.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.additionalliterature.R
 
-class SendErrorFragment : Fragment(R.layout.fragment_send_error) {
+class SendErrorFragment : BaseFragment(R.layout.fragment_send_error) {
 
-    override fun onStart() {
-        super.onStart()
+    override fun onResume() {
+        super.onResume()
     }
 }

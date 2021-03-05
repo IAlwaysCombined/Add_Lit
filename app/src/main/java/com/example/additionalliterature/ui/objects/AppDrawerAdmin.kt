@@ -3,12 +3,10 @@ package com.example.additionalliterature.ui.objects
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.drawerlayout.widget.DrawerLayout
 import com.example.additionalliterature.R
 import com.example.additionalliterature.activities.AuthorizationRegistrationActivity
-import com.example.additionalliterature.ui.AboutUsFragment
-import com.example.additionalliterature.ui.AccountInformationFragment
-import com.example.additionalliterature.ui.SendErrorFragment
-import com.example.additionalliterature.ui.SendNewsFragment
+import com.example.additionalliterature.ui.fragments.AccountInformationFragment
 import com.example.additionalliterature.utilits.replaceActivity
 import com.example.additionalliterature.utilits.replaceFragment
 import com.google.firebase.auth.FirebaseAuth
@@ -20,14 +18,14 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 
 class AppDrawerAdmin(var mainActivity: AppCompatActivity, var toolBar: Toolbar, var auth: FirebaseAuth) {
 
-    private lateinit var mDrawer: Drawer
+    private lateinit var mDrawerAdmin: Drawer
 
     fun create(){
         createDrawer()
     }
 
     private fun createDrawer() {
-        mDrawer = DrawerBuilder()
+        mDrawerAdmin = DrawerBuilder()
             .withActivity(mainActivity)
             .withToolbar(toolBar)
             .withActionBarDrawerToggle(true)
@@ -66,6 +64,7 @@ class AppDrawerAdmin(var mainActivity: AppCompatActivity, var toolBar: Toolbar, 
                     drawerItem: IDrawerItem<*>
                 ): Boolean {
                     when (position) {
+                        0 -> mainActivity.replaceFragment(AccountInformationFragment())
                         5 -> {
                             auth.signOut()
                             mainActivity.replaceActivity(AuthorizationRegistrationActivity())
@@ -75,5 +74,4 @@ class AppDrawerAdmin(var mainActivity: AppCompatActivity, var toolBar: Toolbar, 
                 }
             }).build()
     }
-
 }
