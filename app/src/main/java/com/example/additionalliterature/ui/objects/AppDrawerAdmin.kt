@@ -7,6 +7,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.additionalliterature.R
 import com.example.additionalliterature.activities.AuthorizationRegistrationActivity
 import com.example.additionalliterature.ui.fragments.AccountInformationFragment
+import com.example.additionalliterature.ui.fragments.ListUsersFragment
 import com.example.additionalliterature.utilits.replaceActivity
 import com.example.additionalliterature.utilits.replaceFragment
 import com.google.firebase.auth.FirebaseAuth
@@ -65,6 +66,7 @@ class AppDrawerAdmin(var mainActivity: AppCompatActivity, var toolBar: Toolbar, 
                 ): Boolean {
                     when (position) {
                         0 -> mainActivity.replaceFragment(AccountInformationFragment())
+                        3 -> mainActivity.replaceFragment(ListUsersFragment())
                         5 -> {
                             auth.signOut()
                             mainActivity.replaceActivity(AuthorizationRegistrationActivity())
