@@ -18,7 +18,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/bio_email_text_view"
+        android:textColorHint="@color/colorGray"
+        android:id="@+id/bio_email_text_view_user"
         style="@style/EdtText"
         android:background="@drawable/styles_edt_text"
         android:drawableEnd="@drawable/email"
@@ -29,6 +30,7 @@
         app:layout_constraintTop_toBottomOf="@id/registration_start_view" />
 
     <EditText
+        android:textColorHint="@color/colorGray"
         android:id="@+id/registration_password_edt_text"
         style="@style/EdtText"
         android:background="@drawable/styles_edt_text"
@@ -37,9 +39,10 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bio_email_text_view" />
+        app:layout_constraintTop_toBottomOf="@id/bio_email_text_view_user" />
 
     <EditText
+        android:textColorHint="@color/colorGray"
         android:id="@+id/registration_name_edt_text"
         style="@style/EdtText"
         android:background="@drawable/styles_edt_text"
@@ -50,6 +53,7 @@
         app:layout_constraintTop_toBottomOf="@id/registration_password_edt_text" />
 
     <EditText
+        android:textColorHint="@color/colorGray"
         android:id="@+id/registration_course_edt_text"
         style="@style/EdtText"
         android:background="@drawable/styles_edt_text"

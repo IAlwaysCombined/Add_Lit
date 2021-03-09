@@ -1,5 +1,6 @@
 package com.example.additionalliterature.ui.objects
 
+import android.annotation.SuppressLint
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -7,7 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.additionalliterature.R
 import com.example.additionalliterature.activities.AuthorizationRegistrationActivity
 import com.example.additionalliterature.ui.fragments.AboutUsFragment
-import com.example.additionalliterature.ui.fragments.AccountInformationFragment
+import com.example.additionalliterature.ui.fragments.AccountInformationUserFragment
 import com.example.additionalliterature.ui.fragments.SendErrorFragment
 import com.example.additionalliterature.ui.fragments.SendNewsFragment
 import com.example.additionalliterature.utilits.replaceActivity
@@ -15,22 +16,47 @@ import com.example.additionalliterature.utilits.replaceFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
-import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 
-class AppDrawerUser(var mainActivity: AppCompatActivity, var toolBar: Toolbar, var auth: FirebaseAuth) {
+class AppDrawerUser(
+    var mainActivity: AppCompatActivity,
+    var toolBar: Toolbar,
+    var auth: FirebaseAuth
+) {
 
     private lateinit var mDrawer: Drawer
+    private lateinit var mDrawerLayout: DrawerLayout
 
-    fun create(){
+    fun create() {
         createDrawer()
+        mDrawerLayout = mDrawer.drawerLayout
     }
 
+    fun disableDrawer() {
+        mDrawer.actionBarDrawerToggle?.isDrawerIndicatorEnabled = false
+        mainActivity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+        toolBar.setNavigationOnClickListener {
+            mainActivity.supportFragmentManager.popBackStack()
+        }
+    }
+
+    fun enableDrawer() {
+        mainActivity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        mDrawer.actionBarDrawerToggle?.isDrawerIndicatorEnabled = true
+        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+        toolBar.setNavigationOnClickListener {
+            mDrawer.openDrawer()
+        }
+    }
+
+    @SuppressLint("ResourceAsColor")
     private fun createDrawer() {
         mDrawer = DrawerBuilder()
             .withActivity(mainActivity)
             .withToolbar(toolBar)
+            .withSliderBackgroundColorRes(R.color.colorToolbar)
             .withActionBarDrawerToggle(true)
             .withSelectedItem(-1)
             .addDrawerItems(
@@ -49,7 +75,6 @@ class AppDrawerUser(var mainActivity: AppCompatActivity, var toolBar: Toolbar, v
                     .withName("Сообщить об ошибке")
                     .withSelectable(false)
                     .withIcon(R.drawable.account_error_toolbar),
-                DividerDrawerItem(),
                 PrimaryDrawerItem().withIdentifier(103)
                     .withIconTintingEnabled(true)
                     .withName("О нас")
@@ -67,11 +92,11 @@ class AppDrawerUser(var mainActivity: AppCompatActivity, var toolBar: Toolbar, v
                     drawerItem: IDrawerItem<*>
                 ): Boolean {
                     when (position) {
-                        0 -> mainActivity.replaceFragment(AccountInformationFragment())
+                        0 -> mainActivity.replaceFragment(AccountInformationUserFragment())
                         1 -> mainActivity.replaceFragment(SendNewsFragment())
                         2 -> mainActivity.replaceFragment(SendErrorFragment())
-                        4 -> mainActivity.replaceFragment(AboutUsFragment())
-                        5 -> {
+                        3 -> mainActivity.replaceFragment(AboutUsFragment())
+                        4 -> {
                             auth.signOut()
                             mainActivity.replaceActivity(AuthorizationRegistrationActivity())
                         }

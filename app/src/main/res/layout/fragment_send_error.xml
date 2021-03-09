@@ -7,20 +7,33 @@
     tools:context=".ui.fragments.SendErrorFragment">
 
     <EditText
-        android:background="@drawable/styles_edt_text"
         android:id="@+id/send_error_edt_text"
         style="@style/EdtText"
         android:layout_marginTop="20dp"
-        android:hint="Опишите возникшую ошибку"
+        android:background="@drawable/styles_edt_text"
+        android:hint="Опишите ошибку"
+        android:layout_height="0dp"
+        android:textColorHint="@color/colorGray"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        style="@style/EdtText"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:background="@drawable/styles_edt_text"
+        app:layout_constraintBottom_toTopOf="@+id/send_news_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/send_news_btn"
         style="@style/btn"
         android:background="@drawable/button_background"
-        android:text="Сообщить об ошибке"
+        android:text="@string/send_error_btn_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

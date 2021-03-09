@@ -12,17 +12,19 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/styles_edt_text"
         android:hint="Ссылка на новость"
+        android:textColorHint="@color/colorGray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TextFields" />
 
-    <com.google.android.material.textfield.TextInputEditText
+    <EditText
         style="@style/EdtText"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/styles_edt_text"
         android:hint="Чем новость интирестна?"
+        android:textColorHint="@color/colorGray"
         app:layout_constraintBottom_toTopOf="@+id/send_news_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +34,7 @@
         android:id="@+id/send_news_btn"
         style="@style/btn"
         android:background="@drawable/button_background"
-        android:text="Предложить новость"
+        android:text="@string/send_news_btn_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

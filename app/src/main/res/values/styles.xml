@@ -1,10 +1,32 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="MaterialDrawerTheme.Light">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorRed</item>
         <item name="colorPrimaryDark">@color/colorBlack</item>
         <item name="colorAccent">@color/colorWhite</item>
+    </style>
+
+    <style name="AppThemeLight" parent="MaterialDrawerTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorRed</item>
+        <item name="colorPrimaryDark">@color/colorBlack</item>
+        <item name="colorAccent">@color/colorWhite</item>
+        <item name="popupTheme">@style/actionMenu</item>
+        <item name="colorControlActivated">@color/colorRed</item>
+        <item name="android:colorBackground">@color/colorWhite</item>
+
+        <!-- MaterialDrawer specific values -->
+        <item name="material_drawer_background">@color/colorRed</item>
+        <item name="material_drawer_primary_text">@color/colorWhite</item>
+        <item name="material_drawer_primary_icon">@color/colorWhite</item>
+        <item name="material_drawer_legacy_style">false
+        </item> <!-- Enables legacy Material 1 style -->
+    </style>
+
+    <style name="actionMenu" parent="Theme.AppCompat.Light">
+        <item name="background">@color/colorWhite</item>
+        <item name="actionMenuTextColor">@color/colorBlack</item>
     </style>
 
     <!-- EdtText theme. -->
@@ -14,7 +36,10 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginHorizontal">50dp</item>
         <item name="android:layout_marginVertical">25dp</item>
+        <item name="hintTextColor">@color/colorGray</item>
+        <item name="android:textColor">@color/colorBlack</item>
     </style>
+
 
     <!-- informationAccountEdtText theme. -->
     <style name="informationAccountEdtText">
@@ -22,7 +47,9 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorGray</item>
     </style>
+
 
     <!-- largeText theme. -->
     <style name="largeText">
@@ -34,6 +61,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
     </style>
+
 
     <!-- smallText theme. -->
     <style name="smallText">
@@ -55,5 +83,4 @@
         <item name="android:textColor">@color/colorWhite</item>
         <item name="textAllCaps">false</item>
     </style>
-
 </resources>

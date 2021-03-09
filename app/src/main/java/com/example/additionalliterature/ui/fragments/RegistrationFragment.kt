@@ -34,7 +34,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
 
     private fun signUpUser() {
         when {
-            TextUtils.isEmpty(bio_email_text_view.text.toString()) -> {
+            TextUtils.isEmpty(bio_email_text_view_user.text.toString()) -> {
                 showToast(getString(R.string.email_edt_text_not_filled))
                 return
             }
@@ -51,7 +51,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
                 return
             }
             else -> mAuth.createUserWithEmailAndPassword(
-                bio_email_text_view.text.toString(),
+                bio_email_text_view_user.text.toString(),
                 registration_password_edt_text.text.toString()
             )
                 .addOnCompleteListener {

@@ -6,7 +6,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.additionalliterature.R
 import com.example.additionalliterature.activities.AuthorizationRegistrationActivity
-import com.example.additionalliterature.ui.fragments.AccountInformationFragment
+import com.example.additionalliterature.ui.fragments.AccountInformationAdminFragment
 import com.example.additionalliterature.ui.fragments.ListUsersFragment
 import com.example.additionalliterature.utilits.replaceActivity
 import com.example.additionalliterature.utilits.replaceFragment
@@ -17,17 +17,42 @@ import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 
-class AppDrawerAdmin(var mainActivity: AppCompatActivity, var toolBar: Toolbar, var auth: FirebaseAuth) {
+class AppDrawerAdmin(
+    var mainActivity: AppCompatActivity,
+    var toolBar: Toolbar,
+    var auth: FirebaseAuth
+) {
 
-    private lateinit var mDrawerAdmin: Drawer
+    private lateinit var mDrawer: Drawer
+    private lateinit var mDrawerLayout: DrawerLayout
 
-    fun create(){
-        createDrawer()
+    fun create() {
+        createDrawerAdmin()
+        mDrawerLayout = mDrawer.drawerLayout
     }
 
-    private fun createDrawer() {
-        mDrawerAdmin = DrawerBuilder()
+    fun disableDrawer() {
+        mDrawer.actionBarDrawerToggle?.isDrawerIndicatorEnabled = false
+        mainActivity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+        toolBar.setNavigationOnClickListener {
+            mainActivity.supportFragmentManager.popBackStack()
+        }
+    }
+
+    fun enableDrawer() {
+        mainActivity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        mDrawer.actionBarDrawerToggle?.isDrawerIndicatorEnabled = true
+        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+        toolBar.setNavigationOnClickListener {
+            mDrawer.openDrawer()
+        }
+    }
+
+    private fun createDrawerAdmin() {
+        DrawerBuilder()
             .withActivity(mainActivity)
+            .withSliderBackgroundColorRes(R.color.colorToolbar)
             .withToolbar(toolBar)
             .withActionBarDrawerToggle(true)
             .withSelectedItem(-1)
@@ -52,7 +77,6 @@ class AppDrawerAdmin(var mainActivity: AppCompatActivity, var toolBar: Toolbar, 
                     .withName("Список пользователей")
                     .withSelectable(false)
                     .withIcon(R.drawable.account_about_us_toolbar),
-                DividerDrawerItem(),
                 PrimaryDrawerItem().withIdentifier(104)
                     .withIconTintingEnabled(true)
                     .withName("Выйти из аккаунта")
@@ -65,7 +89,7 @@ class AppDrawerAdmin(var mainActivity: AppCompatActivity, var toolBar: Toolbar, 
                     drawerItem: IDrawerItem<*>
                 ): Boolean {
                     when (position) {
-                        0 -> mainActivity.replaceFragment(AccountInformationFragment())
+                        0 -> mainActivity.replaceFragment(AccountInformationAdminFragment())
                         3 -> mainActivity.replaceFragment(ListUsersFragment())
                         5 -> {
                             auth.signOut()
@@ -74,6 +98,6 @@ class AppDrawerAdmin(var mainActivity: AppCompatActivity, var toolBar: Toolbar, 
                     }
                     return false
                 }
-            }).build()
+            }).build().also { mDrawer = it }
     }
 }
