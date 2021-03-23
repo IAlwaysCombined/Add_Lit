@@ -46,7 +46,7 @@
         android:id="@+id/auth_btn"
         style="@style/btn"
         android:background="@drawable/button_background"
-        android:text="@string/btn_auth_text"
+        android:text="@string/btn_text_auth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/auth_password_edt_text" />

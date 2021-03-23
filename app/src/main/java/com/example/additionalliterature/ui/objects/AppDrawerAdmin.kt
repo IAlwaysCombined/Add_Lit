@@ -19,9 +19,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 
 class AppDrawerAdmin(
     var mainActivity: AppCompatActivity,
-    var toolBar: Toolbar,
-    var auth: FirebaseAuth
-) {
+    var toolBar: Toolbar) {
 
     private lateinit var mDrawer: Drawer
     private lateinit var mDrawerLayout: DrawerLayout
@@ -91,8 +89,7 @@ class AppDrawerAdmin(
                     when (position) {
                         0 -> mainActivity.replaceFragment(AccountInformationAdminFragment())
                         3 -> mainActivity.replaceFragment(ListUsersFragment())
-                        5 -> {
-                            auth.signOut()
+                        4 -> {
                             mainActivity.replaceActivity(AuthorizationRegistrationActivity())
                         }
                     }

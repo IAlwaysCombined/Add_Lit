@@ -4,22 +4,16 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import com.example.additionalliterature.R
+import com.example.additionalliterature.utilits.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_account_information_admin.*
 
 class AccountInformationAdminFragment : BaseAdminFragment(R.layout.fragment_account_information_admin) {
 
-    private lateinit var mAuth: FirebaseAuth
-    private lateinit var databaseReference: DatabaseReference
-    private lateinit var database: FirebaseDatabase
 
     override fun onResume() {
         super.onResume()
-        mAuth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance()
-        databaseReference = database.reference.child("Users")
-
         loadProfile()
 
         circle_view_image_profile_admin.setOnClickListener {
@@ -39,20 +33,16 @@ class AccountInformationAdminFragment : BaseAdminFragment(R.layout.fragment_acco
 
     @SuppressLint("SetTextI18n")
     private fun loadProfile() {
-        val user = mAuth.currentUser
-        val unreferenced = databaseReference.child(user?.uid!!)
+        bio_email_text_view_admin.text = EMAIL
 
-        bio_email_text_view_admin.text = user.email
-
-
-        unreferenced.addValueEventListener(object : ValueEventListener {
+        REF_DATABASE_ROOT.child(NODE_USERS).child(UID)
+            .addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 bio_name_text_view_admin.text =
-                    getString(R.string.name_text) + ": " + snapshot.child("name").value.toString()
+                    getString(R.string.name_text) + ": " + snapshot.child(CHILD_NAME).value.toString()
                 bio_course_text_view_admin.text =
-                    getString(R.string.course_text) + ": " + snapshot.child("course").value.toString()
+                    getString(R.string.course_text) + ": " + snapshot.child(CHILD_COURSE).value.toString()
             }
-
             override fun onCancelled(error: DatabaseError) {
 
             }

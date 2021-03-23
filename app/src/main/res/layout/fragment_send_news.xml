@@ -34,7 +34,7 @@
         android:id="@+id/send_news_btn"
         style="@style/btn"
         android:background="@drawable/button_background"
-        android:text="@string/send_news_btn_text"
+        android:text="@string/btn_text_send_news"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

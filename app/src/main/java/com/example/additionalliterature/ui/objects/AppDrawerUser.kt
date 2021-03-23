@@ -21,9 +21,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 
 class AppDrawerUser(
     var mainActivity: AppCompatActivity,
-    var toolBar: Toolbar,
-    var auth: FirebaseAuth
-) {
+    var toolBar: Toolbar) {
 
     private lateinit var mDrawer: Drawer
     private lateinit var mDrawerLayout: DrawerLayout
@@ -97,7 +95,6 @@ class AppDrawerUser(
                         2 -> mainActivity.replaceFragment(SendErrorFragment())
                         3 -> mainActivity.replaceFragment(AboutUsFragment())
                         4 -> {
-                            auth.signOut()
                             mainActivity.replaceActivity(AuthorizationRegistrationActivity())
                         }
                     }
