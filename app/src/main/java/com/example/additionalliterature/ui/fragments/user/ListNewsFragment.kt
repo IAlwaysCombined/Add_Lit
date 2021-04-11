@@ -1,4 +1,4 @@
-package com.example.additionalliterature.ui.fragments
+package com.example.additionalliterature.ui.fragments.user
 
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager

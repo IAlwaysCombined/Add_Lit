@@ -1,7 +1,8 @@
-package com.example.additionalliterature.ui.fragments
+package com.example.additionalliterature.ui.fragments.user
 
 import androidx.fragment.app.Fragment
 import com.example.additionalliterature.MainActivity
+import com.example.additionalliterature.utilits.hideKeyboard
 
 open class BaseUserFragment(layout: Int) : Fragment(layout) {
 

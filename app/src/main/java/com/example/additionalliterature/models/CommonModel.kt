@@ -1,10 +1,12 @@
 package com.example.additionalliterature.models
 
-data class Users (
+data class CommonModel (
     var uid: String = "",
     var email: String = "",
     val course: String = "",
     val name: String = "",
     val role: String = "",
-    var photoUrl: String = ""
+    var photoUrl: String = "",
+
+    val error: String ="",
 )

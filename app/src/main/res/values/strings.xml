@@ -1,21 +1,20 @@
 <resources>
     <!-- appName. -->
     <string name="app_name">AddLit</string>
-
     <!-- admin. -->
     <string name="admin">admin</string>
-
     <!-- user. -->
     <string name="user">user</string>
 
+
     <!-- btnText. -->
-    <string name="btn_text_auth">Войти</string>
     <string name="btn_registration_text">Зарегистрироваться</string>
     <string name="btn_text_delete">Удалить</string>
     <string name="btn_text_assign">Назначить</string>
     <string name="btn_text_read">Читать</string>
-    <string name="btn_text_send_news">Предложить новость</string>
-    <string name="btn_text_send_error">Сообщить об ошибке</string>
+    <string name="send_news_btn_text">Предложить новость</string>
+    <string name="send_error_btn_text">Сообщить об ошибке</string>
+    <string name="btn_text_auth">Войти</string>
 
     <!-- textView. -->
     <string name="about_us_text_view">О нас</string>
@@ -26,6 +25,7 @@
     <string name="registration_text_view">Регистрация</string>
     <string name="auth_restore_password_text_view">Восстановить пароль</string>
     <string name="course_subject_text_view">Интересующие предметы</string>
+
 
     <!-- hint. -->
     <string name="email_text">E-mail</string>
@@ -41,4 +41,8 @@
     <string name="password_reset_message_sent">Сообщение для сброса пароля отправлено</string>
     <string name="something_went_wrong">Что-то пошло не так</string>
     <string name="registration_user_toast">Пользователь зарегистрирован!</string>
+    <string name="Describe_error">Опишите ошибку</string>
+    <string name="error_send_toast">Ошибка отправлена!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

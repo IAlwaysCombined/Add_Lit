@@ -3,32 +3,55 @@ package com.example.additionalliterature.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.additionalliterature.R
+import com.example.additionalliterature.models.Users
+import com.example.additionalliterature.utilits.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
 
-class RecyclerViewAdapterUsersList(private val values: List<String>) :
-    RecyclerView.Adapter<RecyclerViewAdapterUsersList.MyViewHolder>() {
+class RecyclerViewAdapterUsersList(private var mUserList: MutableList<Users> = mutableListOf()) :
+    RecyclerView.Adapter<RecyclerViewAdapterUsersList.UserViewHolder>() {
 
-    override fun getItemCount() = values.size
+    private lateinit var mRefRole: String
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_item_users_list, parent, false)
-        return MyViewHolder(itemView)
+    class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var role: TextView? = itemView.findViewById(R.id.list_user_role_text_view)
+        var uid: TextView? = itemView.findViewById(R.id.list_uid_text_view)
+        var assignUser: Button? = itemView.findViewById(R.id.list_assign_btn)
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.idUser?.text = values[position]
-        holder.emailUser?.text = "Email"
+    override fun getItemCount() = mUserList.size
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
+        val itemView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.recyclerview_item_users_list, parent, false)
+        return UserViewHolder(itemView)
     }
 
-    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var idUser: TextView? = null
-        var emailUser: TextView? = null
+    override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
+        holder.role?.text = mUserList[position].role
+        holder.uid?.text = mUserList[position].uid
 
-        init {
-            idUser = itemView.findViewById(R.id.list_user_id_text_view)
-            emailUser = itemView.findViewById(R.id.list_email_id_text_view)
+        holder.assignUser?.setOnClickListener {
+            mRefRole = mUserList[position].role
+            if (mRefRole == USER_ROLE) {
+                val dateMap = mutableMapOf<String, Any>()
+                dateMap[CHILD_ROLE] = ADMIN_ROLE
+                REF_DATABASE_ROOT.child(NODE_USERS).child(mUserList[position].uid).updateChildren(dateMap)
+                showToast("Администратор успешно назначен")
+            }
+            else showToast("Пользователь уже является администратором")
         }
+
+
     }
+
+    fun setList(list: List<Users>) {
+        mUserList = list as MutableList<Users>
+        notifyDataSetChanged()
+    }
+
 }

@@ -1,13 +1,10 @@
-package com.example.additionalliterature.ui.fragments
+package com.example.additionalliterature.ui.fragments.registration
 
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import com.example.additionalliterature.MainActivity
 import com.example.additionalliterature.R
 import com.example.additionalliterature.utilits.*
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_registration.*
 
 class RegistrationFragment : Fragment(R.layout.fragment_registration) {
@@ -47,20 +44,23 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
             )
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
-                        REF_DATABASE_ROOT.child(NODE_USERS).child(UID).child(CHILD_NAME)
-                            .setValue(registration_name_edt_text.text.toString())
-                        REF_DATABASE_ROOT.child(NODE_USERS).child(UID).child(CHILD_COURSE)
-                            .setValue(registration_course_edt_text.text.toString())
-                        REF_DATABASE_ROOT.child(NODE_USERS).child(UID).child(CHILD_ROLE)
-                            .setValue(getString(R.string.user))
-                        replaceActivity(MainActivity())
-                        showToast(getString(R.string.registration_user_toast))
-                    } else {
-                        showToast(getString(R.string.something_went_wrong))
-                    }
+                        val uid = AUTH.currentUser?.uid.toString()
+                        val dateMap = mutableMapOf<String, Any>()
+                        dateMap[CHILD_EMAIL] = bio_email_text_view_user.text.toString()
+                        dateMap[CHILD_NAME] = registration_name_edt_text.text.toString()
+                        dateMap[CHILD_COURSE] = registration_course_edt_text.text.toString()
+                        dateMap[CHILD_ROLE] = USER_ROLE
+                        dateMap[CHILD_UID] = uid
+                        REF_DATABASE_ROOT.child(NODE_USERS).child(uid).updateChildren(dateMap)
+                            .addOnCompleteListener {task ->
+                                if(task.isSuccessful){
+                                    replaceActivity(MainActivity())
+                                    showToast(getString(R.string.registration_user_toast))
+                                } else showToast(getString(R.string.something_went_wrong))
+                            }
+                    } else showToast(getString(R.string.something_went_wrong))
                 }
         }
-
     }
 }
 

@@ -7,13 +7,12 @@ import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.additionalliterature.R
 import com.example.additionalliterature.activities.AuthorizationRegistrationActivity
-import com.example.additionalliterature.ui.fragments.AboutUsFragment
-import com.example.additionalliterature.ui.fragments.AccountInformationUserFragment
-import com.example.additionalliterature.ui.fragments.SendErrorFragment
-import com.example.additionalliterature.ui.fragments.SendNewsFragment
+import com.example.additionalliterature.ui.fragments.user.AboutUsFragment
+import com.example.additionalliterature.ui.fragments.user.AccountInformationUserFragment
+import com.example.additionalliterature.ui.fragments.user.SendErrorFragment
+import com.example.additionalliterature.ui.fragments.user.SendNewsFragment
 import com.example.additionalliterature.utilits.replaceActivity
 import com.example.additionalliterature.utilits.replaceFragment
-import com.google.firebase.auth.FirebaseAuth
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem

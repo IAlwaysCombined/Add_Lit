@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.additionalliterature.activities.AuthorizationRegistrationActivity
 import com.example.additionalliterature.databinding.ActivityMainBinding
-import com.example.additionalliterature.ui.fragments.ListNewsFragment
+import com.example.additionalliterature.models.Users
+import com.example.additionalliterature.ui.fragments.user.ListNewsFragment
 import com.example.additionalliterature.ui.objects.AppDrawerAdmin
 import com.example.additionalliterature.ui.objects.AppDrawerUser
 import com.example.additionalliterature.utilits.*
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
+        APP_ACTIVITY = this
         setContentView(mBinding.root)
     }
 
@@ -30,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         initFields()
         initFunc()
+        initUser()
     }
 
     private fun initFields() {
@@ -42,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     private fun initFunc() {
         if (AUTH.currentUser != null) {
             REF_DATABASE_ROOT.child(NODE_USERS).child(UID)
-                .addValueEventListener(object : ValueEventListener{
+                .addValueEventListener(object: ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
                         val roleUser = snapshot.child(CHILD_ROLE).value.toString()
                         if (roleUser == getString(R.string.admin)) {
@@ -62,4 +67,14 @@ class MainActivity : AppCompatActivity() {
             replaceActivity(AuthorizationRegistrationActivity())
         }
     }
+
+    //Initial Users
+    private fun initUser() {
+        REF_DATABASE_ROOT.child(NODE_USERS).child(UID)
+            .addListenerForSingleValueEvent(AppValueEventListener {
+                USER = it.getValue(Users::class.java) ?: Users()
+            })
+
+    }
+
 }

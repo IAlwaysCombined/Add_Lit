@@ -1,14 +1,14 @@
-package com.example.additionalliterature.ui.fragments
+package com.example.additionalliterature.ui.fragments.registration
 
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import com.example.additionalliterature.MainActivity
 import com.example.additionalliterature.R
+import com.example.additionalliterature.ui.fragments.registration.RegistrationFragment
 import com.example.additionalliterature.utilits.AUTH
 import com.example.additionalliterature.utilits.replaceActivity
 import com.example.additionalliterature.utilits.replaceFragment
 import com.example.additionalliterature.utilits.showToast
-import com.google.firebase.auth.FirebaseAuth
 
 import kotlinx.android.synthetic.main.fragment_authorization.*
 

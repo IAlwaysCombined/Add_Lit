@@ -6,14 +6,13 @@ import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.additionalliterature.R
 import com.example.additionalliterature.activities.AuthorizationRegistrationActivity
-import com.example.additionalliterature.ui.fragments.AccountInformationAdminFragment
-import com.example.additionalliterature.ui.fragments.ListUsersFragment
+import com.example.additionalliterature.ui.fragments.admin.AccountInformationAdminFragment
+import com.example.additionalliterature.ui.fragments.admin.ErrorListFragment
+import com.example.additionalliterature.ui.fragments.admin.ListUsersFragment
 import com.example.additionalliterature.utilits.replaceActivity
 import com.example.additionalliterature.utilits.replaceFragment
-import com.google.firebase.auth.FirebaseAuth
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
-import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 
@@ -88,10 +87,9 @@ class AppDrawerAdmin(
                 ): Boolean {
                     when (position) {
                         0 -> mainActivity.replaceFragment(AccountInformationAdminFragment())
+                        2 -> mainActivity.replaceFragment(ErrorListFragment())
                         3 -> mainActivity.replaceFragment(ListUsersFragment())
-                        4 -> {
-                            mainActivity.replaceActivity(AuthorizationRegistrationActivity())
-                        }
+                        4 -> mainActivity.replaceActivity(AuthorizationRegistrationActivity())
                     }
                     return false
                 }

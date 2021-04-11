@@ -1,17 +1,17 @@
-package com.example.additionalliterature.utilits
+ package com.example.additionalliterature.utilits
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.additionalliterature.R
-import com.example.additionalliterature.activities.AuthorizationRegistrationActivity
 
 
-fun Fragment.showToast(message: String) {
-    Toast.makeText(this.context, message, Toast.LENGTH_SHORT).show()
+ fun showToast(message: String) {
+    Toast.makeText(APP_ACTIVITY, message, Toast.LENGTH_SHORT).show()
 }
 
 fun AppCompatActivity.replaceActivity(activity: Activity) {
@@ -44,4 +44,11 @@ fun Fragment.replaceFragment(fragment: Fragment) {
         ?.addToBackStack(null)
         ?.replace(R.id.register_data_container, fragment)
         ?.commit()
+}
+
+fun hideKeyboard() {
+    /* Функция скрывает клавиатуру */
+    val imm: InputMethodManager = APP_ACTIVITY.getSystemService(Context.INPUT_METHOD_SERVICE)
+            as InputMethodManager
+    imm.hideSoftInputFromWindow(APP_ACTIVITY.window.decorView.windowToken, 0)
 }

@@ -1,4 +1,4 @@
-package com.example.additionalliterature.ui.fragments
+package com.example.additionalliterature.ui.fragments.admin
 
 import androidx.fragment.app.Fragment
 import com.example.additionalliterature.MainActivity

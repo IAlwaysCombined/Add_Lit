@@ -3,7 +3,7 @@ package com.example.additionalliterature.activities
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.additionalliterature.databinding.ActivityAuthorizationrRegistrationBinding
-import com.example.additionalliterature.ui.fragments.AuthorizationFragment
+import com.example.additionalliterature.ui.fragments.registration.AuthorizationFragment
 import com.example.additionalliterature.utilits.replaceFragmentAuthorization
 
 
