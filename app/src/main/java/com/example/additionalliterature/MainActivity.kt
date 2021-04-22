@@ -74,7 +74,5 @@ class MainActivity : AppCompatActivity() {
             .addListenerForSingleValueEvent(AppValueEventListener {
                 USER = it.getValue(Users::class.java) ?: Users()
             })
-
     }
-
 }

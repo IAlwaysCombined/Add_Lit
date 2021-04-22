@@ -1,12 +1,17 @@
 package com.example.additionalliterature.ui.fragments.admin
 
+import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.additionalliterature.R
 import com.example.additionalliterature.adapters.RecyclerViewAdapterUsersList
+import com.example.additionalliterature.databinding.FragmentListUsersBinding
 import com.example.additionalliterature.models.Users
-import com.example.additionalliterature.utilits.*
+import com.example.additionalliterature.utilits.AppValueEventListener
+import com.example.additionalliterature.utilits.NODE_USERS
+import com.example.additionalliterature.utilits.REF_DATABASE_ROOT
+import com.example.additionalliterature.utilits.getUsers
 import com.google.firebase.database.DatabaseReference
-import kotlinx.android.synthetic.main.fragment_list_users.*
 
 class ListUsersFragment : BaseAdminFragment(R.layout.fragment_list_users) {
 
@@ -15,6 +20,12 @@ class ListUsersFragment : BaseAdminFragment(R.layout.fragment_list_users) {
     private lateinit var mRefUser: DatabaseReference
     private lateinit var mUsersListener: AppValueEventListener
     private var mUserList = mutableListOf<Users>()
+    private lateinit var binding: FragmentListUsersBinding
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentListUsersBinding.bind(view)
+    }
 
     override fun onResume() {
         super.onResume()
@@ -22,7 +33,7 @@ class ListUsersFragment : BaseAdminFragment(R.layout.fragment_list_users) {
     }
 
     private fun getAllUsers() {
-        mRecyclerView = list_user_recycler_view
+        mRecyclerView = binding.listUserRecyclerView
         mAdapter = RecyclerViewAdapterUsersList(mutableListOf())
         mRefUser = REF_DATABASE_ROOT.child(NODE_USERS)
         mRecyclerView.adapter = mAdapter
