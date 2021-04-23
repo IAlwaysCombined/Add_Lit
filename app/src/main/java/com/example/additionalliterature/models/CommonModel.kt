@@ -9,4 +9,10 @@ data class CommonModel (
     var photoUrl: String = "",
 
     val error: String ="",
+
+
+    val newsTitle: String = "",
+    val newsText: String = "",
+    val newsImageUrl: String = "",
+    val newsUrl: String = ""
 )

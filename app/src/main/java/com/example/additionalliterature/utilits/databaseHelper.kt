@@ -14,8 +14,13 @@ lateinit var REF_DATABASE_ROOT: DatabaseReference
 lateinit var USER:Users
 lateinit var EMAIL: String
 
+//Node realtime database
 const val NODE_USERS = "users"
 const val NODE_ERROR = "error"
+const val NODE_NEWS = "news"
+const val NODE_NEWS_REQUEST = "news_request"
+
+
 const val CHILD_UID = "uid"
 const val CHILD_PHONE = "phone"
 const val CHILD_USERNAME = "username"
@@ -25,6 +30,13 @@ const val CHILD_NAME = "name"
 const val CHILD_ROLE = "role"
 const val CHILD_EMAIL = "email"
 const val CHILD_ERROR = "error"
+
+
+//News const
+const val CHILD_NEWS_TEXT = "newsText"
+const val CHILD_NEWS_TITLE = "newsTitle"
+const val CHILD_NEWS_IMAGE_URL = "newsImageUrl"
+const val CHILD_NEWS_URL = "newsUrl"
 
 //Role const
 const val USER_ROLE = "user"

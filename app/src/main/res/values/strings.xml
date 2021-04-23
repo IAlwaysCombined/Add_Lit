@@ -45,4 +45,10 @@
     <string name="error_send_toast">Ошибка отправлена!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="news_send_toast">Новость отправлена!</string>
+    <string name="url_news_edt_text_not_field">Поле Ссылка на новость не заполнено</string>
+    <string name="title_news_edt_text_not_field">Поле Заголовок новости не заполнено</string>
+    <string name="text_news_edt_text_not_field">Поле Текс новости не заполнено</string>
+    <string name="error_send_edt_text_not_field">Поле Описание ошибки не заполнено</string>
+    <string name="btn_text_publish">Опубликовать</string>
 </resources>

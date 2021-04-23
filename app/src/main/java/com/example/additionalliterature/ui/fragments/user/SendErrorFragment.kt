@@ -22,15 +22,25 @@ class SendErrorFragment : BaseUserFragment(R.layout.fragment_send_error) {
 
     //Send error
     private fun sendError() {
-        val uid = AUTH.currentUser?.uid.toString()
-        val dateMap = mutableMapOf<String, Any>()
-        dateMap[CHILD_ERROR] = binding.sendErrorBtn.text.toString()
-        dateMap[CHILD_UID] = uid
-        REF_DATABASE_ROOT.child(NODE_ERROR).child(uid).updateChildren(dateMap)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    showToast(getString(R.string.error_send_toast))
-                } else showToast(getString(R.string.something_went_wrong))
+        when {
+            binding.sendErrorEditText.text.toString().isEmpty() -> {
+                showToast(getString(R.string.error_send_edt_text_not_field))
+                return
             }
+            else -> {
+                val uid = AUTH.currentUser?.uid.toString()
+                val dateMap = mutableMapOf<String, Any>()
+                dateMap[CHILD_ERROR] = binding.sendErrorEditText.text.toString()
+                dateMap[CHILD_UID] = uid
+                REF_DATABASE_ROOT.child(NODE_ERROR).child(uid)
+                    .updateChildren(dateMap)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            showToast(getString(R.string.error_send_toast))
+                        } else showToast(getString(R.string.something_went_wrong))
+                    }
+
+            }
+        }
     }
 }

@@ -53,5 +53,4 @@ class RecyclerViewAdapterUsersList(private var mUserList: MutableList<Users> = m
         mUserList = list as MutableList<Users>
         notifyDataSetChanged()
     }
-
 }

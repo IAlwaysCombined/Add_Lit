@@ -18,17 +18,50 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TextFields" />
 
-    <EditText
-        style="@style/EdtText"
+    <ImageView
+        android:id="@+id/image_news"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="250dp"
         android:background="@drawable/styles_edt_text"
-        android:hint="Чем новость интирестна?"
+        app:layout_constraintTop_toBottomOf="@id/send_url_news_edt_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="10dp"/>
+
+    <EditText
+        android:id="@+id/send_title_edt_text"
+        style="@style/EdtText"
+        android:layout_marginVertical="7dp"
+        android:background="@drawable/styles_edt_text"
+        android:hint="Заголовок новости"
         android:textColorHint="@color/colorGray"
-        app:layout_constraintBottom_toTopOf="@+id/send_news_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/send_url_news_edt_text" />
+        app:layout_constraintTop_toBottomOf="@+id/image_news"
+        tools:ignore="TextFields" />
+
+    <EditText
+        android:id="@+id/send_text_news_edt_text"
+        android:hint="Текст новости"
+        android:textColorHint="@color/colorGray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="7dp"
+        android:background="@drawable/styles_edt_text"
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        android:lines="20"
+        android:maxLines="20"
+        android:minLines="10"
+        android:scrollbars="vertical"
+        android:textColor="@color/colorBlack"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/send_title_edt_text"
+        tools:ignore="RtlHardcoded" />
 
     <Button
         android:id="@+id/send_news_btn"

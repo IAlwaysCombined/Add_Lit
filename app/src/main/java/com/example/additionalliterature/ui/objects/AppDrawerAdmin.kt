@@ -8,6 +8,7 @@ import com.example.additionalliterature.R
 import com.example.additionalliterature.activities.AuthorizationRegistrationActivity
 import com.example.additionalliterature.ui.fragments.admin.AccountInformationAdminFragment
 import com.example.additionalliterature.ui.fragments.admin.ErrorListFragment
+import com.example.additionalliterature.ui.fragments.admin.ListRequestNewsFragment
 import com.example.additionalliterature.ui.fragments.admin.ListUsersFragment
 import com.example.additionalliterature.utilits.replaceActivity
 import com.example.additionalliterature.utilits.replaceFragment
@@ -87,6 +88,7 @@ class AppDrawerAdmin(
                 ): Boolean {
                     when (position) {
                         0 -> mainActivity.replaceFragment(AccountInformationAdminFragment())
+                        1 -> mainActivity.replaceFragment(ListRequestNewsFragment())
                         2 -> mainActivity.replaceFragment(ErrorListFragment())
                         3 -> mainActivity.replaceFragment(ListUsersFragment())
                         4 -> mainActivity.replaceActivity(AuthorizationRegistrationActivity())
